@@ -1117,7 +1117,7 @@ datum
 		harmful/neurotoxin 
 			name = "Phenobarbitone"
 			id = "neurotoxin"
-			description = "A fast acting seditive that can knock people out in higher doses."
+			description = "A fast acting sedative that can knock people out in higher doses."
 			reagent_state = LIQUID
 			fluid_r = 100
 			fluid_g = 145
