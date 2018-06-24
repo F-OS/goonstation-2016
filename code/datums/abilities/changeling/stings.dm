@@ -35,8 +35,8 @@
 		logTheThing("combat", holder.owner, MT, "stings %target% with [name] as a changeling [log_loc(holder.owner)].")
 
 	neurotoxin
-		name = "Neurotoxic Sting"
-		desc = "Transfer some neurotoxin into your target."
+		name = "Sedative Sting"
+		desc = "Transfer a quick acting sedative into your target."
 		icon_state = "stingneuro"
 		venom_id = "neurotoxin"
 
