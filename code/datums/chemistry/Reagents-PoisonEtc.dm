@@ -1114,10 +1114,10 @@ datum
 				..(M)
 				return
 
-		harmful/neurotoxin // COGWERKS CHEM REVISION PROJECT. which neurotoxin?
-			name = "neurotoxin"
+		harmful/neurotoxin 
+			name = "Phenobarbitone"
 			id = "neurotoxin"
-			description = "A dangerous toxin that attacks the nervous system"
+			description = "A fast acting seditive that can knock people out in higher doses."
 			reagent_state = LIQUID
 			fluid_r = 100
 			fluid_g = 145
