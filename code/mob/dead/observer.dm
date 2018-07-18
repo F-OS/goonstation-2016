@@ -76,9 +76,7 @@
 		return
 
 	src.icon_state = "doubleghost"
-
-PM Find
-R	src.visible_message("<span style=\"color:red\"><b>[src] is busted!</b></span>","<span style=\"color:red\">You are demateralized into a state of further death!</span>")
+	src.visible_message("<span style=\"color:red\"><b>[src] is busted!</b></span>","<span style=\"color:red\">You are demateralized into a state of further death!</span>")
 	src.corpse = null
 
 	if (wig)
