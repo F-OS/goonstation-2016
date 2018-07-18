@@ -143,7 +143,6 @@
 		if (mob_can_enter_storage(user)) // check before the prompt for dead/incapped/restrained/etc users
 			if (alert(user, "Would you like to enter cryogenic storage? You will be unable to leave it again until 15 minutes have passed.", "Confirmation", "Yes", "No") == "Yes")
 				if (mob_can_enter_storage(user)) // check again in case they left the prompt up and moved away/died/whatever
-					user.cryoed = 1
 					add_person_to_storage(user)
 					return 1
 		return 0
@@ -186,7 +185,6 @@
 		if (add_person_to_queue(user))
 			stored_mobs[user] = null
 			stored_mobs -= user
-			user.cryoed = 0
 			return 1
 		return 0
 
