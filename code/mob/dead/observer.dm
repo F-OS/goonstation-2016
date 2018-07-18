@@ -24,7 +24,14 @@
 /mob/dead/observer/proc/apply_looks_of(var/client/C)
 	if (!C.preferences)
 		return
-	var/datum/preferences/P = C.preferences
+
+	var/health_shown = 0
+	var/delete_on_logout = 1
+	var/delete_on_logout_reset = 1
+	var/obj/item/clothing/head/wig/wig = null
+
+/mob/dead/observer/disposing()
+corpse = null	var/datum/preferences/P = C.preferences
 
 	if (!P.AH)
 		return
@@ -121,7 +128,7 @@
 	set desc = "Leave your lifeless body behind and become a ghost."
 
 	if(src.stat != 2)
-		if (istype(mob.loc, /obj/cryotron))
+		if (istype(src.loc, /obj/cryotron))
 			var/confirm = alert("Are you sure you want to observe? You will not be able to play this round!", "Observe?", "Yes", "No")
 			if(confirm)
 				src.ghostize()
@@ -252,6 +259,13 @@
 		src.x++
 	if((direct & WEST) && src.x > 1)
 		src.x--
+	var/health_shown = 0
+	var/delete_on_logout = 1
+	var/delete_on_logout_reset = 1
+	var/obj/item/clothing/head/wig/wig = null
+
+/mob/dead/observer/disposing()
+corpse = null
 
 /mob/dead/observer/can_use_hands()	return 0
 /mob/dead/observer/is_active()		return 0
