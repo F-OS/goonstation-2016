@@ -76,7 +76,9 @@
 		return
 
 	src.icon_state = "doubleghost"
-	src.visible_message("<span style=\"color:red\"><b>[src] is busted!</b></span>","<span style=\"color:red\">You are demateralized into a state of further death!</span>")
+
+PM Find
+R	src.visible_message("<span style=\"color:red\"><b>[src] is busted!</b></span>","<span style=\"color:red\">You are demateralized into a state of further death!</span>")
 	src.corpse = null
 
 	if (wig)
@@ -121,13 +123,13 @@
 	set desc = "Leave your lifeless body behind and become a ghost."
 
 	if(src.stat != 2)
-		if(prob(5))
-			src.show_text("You strain really hard. I mean, like, really, REALLY hard but you still can't become a ghost!", "blue")
-		else if(src.cryoed)
+		if(src.cryoed)
 			var/confirm = alert("Are you sure you want to observe? You will not be able to play this round!", "Observe?", "Yes", "No")
 			if(confirm)
 				src.ghostize()
 				qdel(src)
+		else if(prob(5))
+			src.show_text("You strain really hard. I mean, like, really, REALLY hard but you still can't become a ghost!", "blue")
 		else
 			src.show_text("You're not dead yet!", "red")
 		return
