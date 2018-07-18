@@ -4,7 +4,6 @@
 	gender = MALE
 	var/list/stomach_contents = list()
 	var/last_eating = 0
-	var/cryoed = 0
 	var/oxyloss = 0
 	var/toxloss = 0
 	var/brainloss = 0
