@@ -123,6 +123,11 @@
 	if(src.stat != 2)
 		if(prob(5))
 			src.show_text("You strain really hard. I mean, like, really, REALLY hard but you still can't become a ghost!", "blue")
+		else if(src.cryoed)
+			var/confirm = alert("Are you sure you want to observe? You will not be able to play this round!", "Observe?", "Yes", "No")
+			if(confirm)
+				src.ghostize()
+				qdel(src)
 		else
 			src.show_text("You're not dead yet!", "red")
 		return
