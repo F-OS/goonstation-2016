@@ -125,8 +125,7 @@
 			var/confirm = alert("Are you sure you want to observe? You will not be able to play this round!", "Observe?", "Yes", "No")
 			if(confirm)
 				src.ghostize()
-				qdel(src)
-				return 1
+				qdel(src) 
 		else if(prob(5))
 			src.show_text("You strain really hard. I mean, like, really, REALLY hard but you still can't become a ghost!", "blue")
 		else
