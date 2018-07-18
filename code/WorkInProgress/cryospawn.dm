@@ -186,6 +186,7 @@
 		if (add_person_to_queue(user))
 			stored_mobs[user] = null
 			stored_mobs -= user
+			user.cryoed = 0
 			return 1
 		return 0
 
