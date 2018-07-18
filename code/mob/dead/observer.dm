@@ -24,14 +24,7 @@
 /mob/dead/observer/proc/apply_looks_of(var/client/C)
 	if (!C.preferences)
 		return
-
-	var/health_shown = 0
-	var/delete_on_logout = 1
-	var/delete_on_logout_reset = 1
-	var/obj/item/clothing/head/wig/wig = null
-
-/mob/dead/observer/disposing()
-corpse = null	var/datum/preferences/P = C.preferences
+	var/datum/preferences/P = C.preferences
 
 	if (!P.AH)
 		return
@@ -133,6 +126,7 @@ corpse = null	var/datum/preferences/P = C.preferences
 			if(confirm)
 				src.ghostize()
 				qdel(src)
+				return 1
 		else if(prob(5))
 			src.show_text("You strain really hard. I mean, like, really, REALLY hard but you still can't become a ghost!", "blue")
 		else
@@ -259,13 +253,6 @@ corpse = null	var/datum/preferences/P = C.preferences
 		src.x++
 	if((direct & WEST) && src.x > 1)
 		src.x--
-	var/health_shown = 0
-	var/delete_on_logout = 1
-	var/delete_on_logout_reset = 1
-	var/obj/item/clothing/head/wig/wig = null
-
-/mob/dead/observer/disposing()
-corpse = null
 
 /mob/dead/observer/can_use_hands()	return 0
 /mob/dead/observer/is_active()		return 0
