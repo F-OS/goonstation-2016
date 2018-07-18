@@ -121,7 +121,7 @@
 	set desc = "Leave your lifeless body behind and become a ghost."
 
 	if(src.stat != 2)
-		if(src.cryoed)
+		if (istype(mob.loc, /obj/cryotron))
 			var/confirm = alert("Are you sure you want to observe? You will not be able to play this round!", "Observe?", "Yes", "No")
 			if(confirm)
 				src.ghostize()
