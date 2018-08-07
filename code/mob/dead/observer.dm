@@ -121,8 +121,8 @@
 	set desc = "Leave your lifeless body behind and become a ghost."
 
 	if(src.stat != 2)
-		if (istype(src.loc, /obj/cryotron))
-			var/confirm = alert("Are you sure you want to observe? You will not be able to play this round!", "Observe?", "Yes", "No")
+		if (src.hibernate == 1)
+			var/confirm = alert("Are you sure you want to enter long term cryogenic storage and  observe? You will not be able to play this round!", "Observe?", "Yes", "No")
 			if(confirm)
 				src.ghostize()
 				qdel(src) 
