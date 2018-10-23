@@ -5,25 +5,26 @@
         name = "some psychiatric medication"
     psych/diazepam
         name = "Diazepam"
-        id = "Diazepam"
+        id = "diazepam"
         desc = "A weak benzodiazepine medication that produces a calming sedative effect, commonly used for the treatment of anxiety"
         addiction_prob = 10
-	var/remove_buff
+	var/amount
 	on_remove()
 		if(istype(holder) && istype(holder.my_atom) && hascall(holder.my_atom,"remove_stam_mod_max"))
 			holder.my_atom:remove_stam_mod_max("diazepam")
 		return
-
         on_mob_life()
 	    var/mob/living/carbon/human/K = M
             if(!M) 
                 M = holder.my_atom
-            if(!amount || !degree)
-                var/amount = holder.get_reagent_amount(src.id)
+            amount = holder.get_reagent_amount(src.id) + holder.get_reagent_amount(ethanol) * 2 // don't mix these things
             if(prob(15))
 		for(var/datum/ailment_data/disease/virus in M.ailments)
                         if(istype(virus.master,/datum/ailment/disease/space_madness) || istype(virus.master, /datum/ailment/disability/epilepsy))
                             M.cure_disease(virus)
+		for(var/datum/ailment/addiction/addict in M.ailments)
+			if(addict.associated_reagent == "ethanol")
+				addict.withdrawal_duration = addict.withdrawal_duration + 6 // Speeds up ethanol withdrawl a bit to simulate the GABAenergic effects.
             if(amount) // Regular calming.
                 if(prob(10))
                     	boutput(M, pick("<span style=\"color:red\">You feel less anxious.</span>", "<span style=\"color:red\">You feel a bit more mellowed out.</span>", "<span style=\"color:red\">You feel relaxed.</span>", <span style=\"color:red\">You feel sleepy.</span>")
@@ -61,5 +62,19 @@
 		if(prob(20))
 			M.drowsyness = max(M.drowsyness, 40)
 	     if(amount > 75) // Mild overdose
-	     
+	     	// respiratory depression
 	     if(amount > 100) // Critical overdose
+		// liver toxicity and severe heart depression
+
+    psych/chlorpromazine
+        name = "chlorpromazine"
+        id = "chlorpromazine"
+        desc = "A antipsychotic that immediately produces a calming effect and treats psychosis, commonly used for the treatment of Schizophernia, Space Madness, Space Induced Violence Disorder (beserker), and the like."
+	var/amount
+	on_remove()
+	    //todo
+        on_mob_life()
+	    var/mob/living/carbon/human/K = M
+            if(!M) 
+                M = holder.my_atom
+            amount = holder.get_reagent_amount(src.id)
