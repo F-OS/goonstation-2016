@@ -28,7 +28,7 @@
                 degree = 2
             else if(amount < 60) // Respiratory arrest
                 degree = 3
-            if(prob(5))
+            if(prob(15))
 		for(var/datum/ailment_data/disease/virus in M.ailments)
                         if(istype(virus.master,/datum/ailment/disease/space_madness) || istype(virus.master, /datum/ailment/disability/epilepsy))
                             M.cure_disease(virus)
@@ -48,15 +48,13 @@
                 if (K.sims)
 			K.sims.affectMotive("energy", -3)
                     	K.sims.affectMotive("comfort", 1)
-                if(hascall(M,"add_stam_mod_max"))
-                    	M:add_stam_mod_max("benzo", -3)
 		if (M.a_intent != INTENT_HELP)
-                    	boutput(M, <span style=\"color:red\">You don't feel like attacking people right now.</span>")
+                    	boutput(M, <span style=\"color:red\">You're too tired to attack people right now.</span>")
                     	M.a_intent = INTENT_HELP
-                if(HasEffect(/datum/bioEffect/clumsy))
+                if(!HasEffect(/datum/bioEffect/clumsy))
                      	M:bioHolder.AddEffect(/datum/bioEffect/clumsy, timeleft = 60)
 		if(istype(holder) && istype(holder.my_atom) && hascall(holder.my_atom,"add_stam_mod_max"))
-			remove_buff = holder.my_atom:add_stam_mod_max("benzo", -15)
+			remove_buff = holder.my_atom:add_stam_mod_max("benzo", -25)
 		if(M.m_intent == "run")
 			M.m_intent = "walk"
              if(degree == 3) // Severe and continual oxygen damage
