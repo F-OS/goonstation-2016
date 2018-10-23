@@ -51,7 +51,7 @@
                 if(hascall(M,"add_stam_mod_max"))
                     	M:add_stam_mod_max("benzo", -3)
 		if (M.a_intent != INTENT_HELP)
-                    	boutput(M, <span style=\"color:red\">You don't feel like attacking people right now.</span>)
+                    	boutput(M, <span style=\"color:red\">You don't feel like attacking people right now.</span>")
                     	M.a_intent = INTENT_HELP
                 if(HasEffect(/datum/bioEffect/clumsy))
                      	M:bioHolder.AddEffect(/datum/bioEffect/clumsy, timeleft = 60)
