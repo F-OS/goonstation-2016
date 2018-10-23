@@ -26,7 +26,7 @@
                             M.cure_disease(virus)
             if(amount) // Regular calming.
                 if(prob(10))
-                    	boutput(M, pick("<span style=\"color:red\">You feel less anxious.</span>"), "<span style=\"color:red\">You feel a bit more mellowed out.</span>", "<span style=\"color:red\">You feel relaxed.</span>", <span style=\"color:red\">You feel sleepy.</span>")
+                    	boutput(M, pick("<span style=\"color:red\">You feel less anxious.</span>", "<span style=\"color:red\">You feel a bit more mellowed out.</span>", "<span style=\"color:red\">You feel relaxed.</span>", <span style=\"color:red\">You feel sleepy.</span>")
                 if(prob(5))
                     	M.emote(pick("smile", "grin", "yawn")
 		if (K.sims && prob(5))
@@ -34,7 +34,7 @@
                    	K.sims.affectMotive("comfort", 1)
             if(amount > 25) // Sedation
                 if(prob(10))
-                   	boutput(M, pick("<span style=\"color:red\">You feel like you should just lie down somewhere and sleep.</span>"), "<span style=\"color:red\">You feel weak.</span>", "<span style=\"color:red\">You feel very sleepy.</span>")
+                   	boutput(M, pick("<span style=\"color:red\">You feel like you should just lie down somewhere and sleep.</span>", "<span style=\"color:red\">You feel weak.</span>", "<span style=\"color:red\">You feel very sleepy.</span>")
                 if(prob(15))
                     	M.emote("yawn")
                 if (K.sims && prob(20))
