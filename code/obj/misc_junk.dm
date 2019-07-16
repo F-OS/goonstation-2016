@@ -70,7 +70,7 @@
 	New()
 		..()
 		if (prob(25))
-			desc = "Author of Manufacturing ComCent and What Uncle NT Really Wants: The Big Plasma's rent-a-thug"
+			desc = "Author of Manufacturing ComCent and What Uncle NT Really Wants: Big Plasma's rent-a-thug
 /obj/item/c_tube
 	name = "cardboard tube"
 	icon = 'icons/obj/items.dmi'
