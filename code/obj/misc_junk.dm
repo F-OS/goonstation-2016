@@ -67,7 +67,10 @@
 	stamina_damage = 40
 	stamina_cost = 40
 	stamina_crit_chance = 5
-
+	New()
+		..()
+		if (prob(25))
+			desc = "Author of Manufacturing ComCent and What Uncle NT Really Wants: The Big Plasma's rent-a-thug"
 /obj/item/c_tube
 	name = "cardboard tube"
 	icon = 'icons/obj/items.dmi'
