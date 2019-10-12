@@ -102,6 +102,19 @@
 		return
 
 	return
+/obj/item/handcuffs/on_hit(atom/hit)
+	..()
+	if (ishuman(hit))
+		var/mob/living/carbon/human/H = hit
+		if(!H.limbs.l_arm || !H.limbs.r_arm)
+			src.visible_message("The handcuffs hit [H], but they're missing a wrist, so the cuffs fall off! [pick("Damnit!", "Darn!", "Heck!", "Lame!")]")
+			return
+		H.handcuffed = new /obj/item/handcuffs(H)
+		boutput(H, "<span style=\"color:red\">You get hit at the perfect angle with [H], and they instantly cuff you! Damn, you're not even mad, that's impressive.<span>")
+		H.drop_from_slot(H.r_hand)
+		H.drop_from_slot(H.l_hand)
+		H.drop_juggle()
+		H.update_clothing()
 
 /obj/item/handcuffs/disposing()
 	if (ishuman(src.loc))
