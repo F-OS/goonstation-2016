@@ -542,6 +542,23 @@
 				return
 			else
 				..()
+	chomsky
+		name = "Noam Chomsbee"
+		desc = "The father of beeguistics and an outspoken critic of NT hegemony."
+		icon_state = "traumabee-wings" // Temp until I figure out spriting
+		icon_body = "traumabee" // Temp until I figure out spriting
+		sleeping_icon_state = "traumabee-sleep" // Temp until I figure out spriting
+		generic = 0
+		
+		attack_hand(mob/user as mob)
+			if (src.alive && user.a_intent == "help")
+			src.visible_message("<span style=\"color:blue\"><b>[user]</b> [pick("pets","hugs","snuggles","cuddles")] [src]!</span>")
+				if(prob(30) && (user.job == "Security Officer" || user.job == "Head of Security" || user.job == "Detective" || user.job == "NT-SO") )
+					for(var/mob/O in hearers(src, null))
+						O.show_message("[src] sliently judges [user] for supporting repression.",2)
+				return
+			else
+				..()
 
 	chef
 		desc = "Please do not think too hard about the circumstances that would result in a bee chef."
