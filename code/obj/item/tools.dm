@@ -475,3 +475,28 @@ MATERIAL COLLECTOR
 
 /obj/item/weldingtool/vr
 	icon = 'icons/effects/VR.dmi'
+
+
+/obj/item/tagout
+	name = "safety tags"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "stag"
+	inhand_image_icon = 'icons/mob/inhand/hand_tools.dmi'
+	flags = FPRINT | TABLEPASS
+	force = 1.0
+	throwforce = 2.0
+	item_state = "wrench"
+	w_class = 1.0
+	m_amt = 20
+	desc = "A tool used to warn engineers about dangerous equipment"
+	stamina_damage = 10
+	stamina_cost = 10
+	stamina_crit_chance = 10
+	module_research = list("tools" = 2, "metals" = 2)
+	rand_pos = 1
+	numtags = 20
+/obj/item/tagout/examine()
+	set src in usr
+	set category = "Local"
+	boutput(usr, "[bicon(src)] [src.name] has [src.numtags] tags left!")
+	return
