@@ -1216,6 +1216,7 @@
 	var/op_stage = 0.0
 	var/obj/item/device/key/skull/key = null //May randomly contain a key
 	rand_pos = 1
+	var/canthespam = 0
 
 	New()
 		..()
@@ -1298,23 +1299,20 @@
 
 /obj/item/skull/attack_self(mob/user as mob)
 	var/nerdlist = list()
-	for (var/mob/living/carbon/M in range(7, user))
-		if (M == user || !istype(user.loc, /turf)) 
-			continue
-		nerdlist += M
-	user.visible_message("<span style=\"color:blue\">[user] holds out [src] and stares into it.</span>")
-	if(src.donor || src.donor_name)
-		if(length(nerdlist) != 0)
-			user.say("Alas, poor [src.donor_name ? "[src.donor_name]" : "[src.donor.real_name]"]! I knew him, [pick(nerdlist)], a fellow of infinite jest, of most excellent fancy.")
+	if(canthespam == 0)
+		for (var/mob/living/carbon/M in orange(7, user))
+			if (M == user || !istype(user.loc, /turf)) 
+				continue
+			nerdlist += M
+		user.visible_message("<span style=\"color:blue\">[user] holds out [src] and stares into it.</span>")
+		if(src.donor || src.donor_name)
+			user.say("Alas, poor [src.donor_name ? "[src.donor_name]" : "[src.donor.real_name]"]! I knew him, [length(nerdlist) != 0 ? pick(nerdlist) : "Horatio"], a fellow of infinite jest, of most excellent fancy.")
 		else
-			user.say("Alas, poor [src.donor_name ? "[src.donor_name]" : "[src.donor.real_name]"]! I knew him, Horatio, a fellow of infinite jest, of most excellent fancy.")
-	else
-		if(length(nerdlist) != 0)
-			user.say("Alas, poor Yorick! I knew him, [pick(nerdlist)], a fellow of infinite jest, of most excellent fancy.")
-		else
-			user.say("Alas, poor Yorick! I knew him, Horatio, a fellow of infinite jest, of most excellent fancy.")
+			user.say("Alas, poor Yorick! I knew him, [length(nerdlist) != 0 ? pick(nerdlist) : "Horatio"], a fellow of infinite jest, of most excellent fancy.")
+		canthespam = 1
+	spawn(20)
+		canthespam = 0
 	return // Now cracks a noble heart.—Good night, sweet prince, And flights of angels sing thee to thy rest.
-
 /obj/item/skull/strange // Predators get this one (Convair880).
 	name = "strange skull"
 	desc = "This thing is weird."
