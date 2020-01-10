@@ -1299,10 +1299,21 @@
 /obj/item/skull/attack_self(mob/user as mob)
 	var/nerdlist = list()
 	for (var/mob/living/carbon/M in range(7, user))
-		if (M == user || istype(user.loc, /turf)) continue
+		if (M == user || !istype(user.loc, /turf)) 
+			continue
 		nerdlist += M
-	if(nerdlist)
-		user.say("Alas, poor [src.donor_name]! I knew him, [pick(nerdlist)], a fellow of infinite jest, of most excellent fancy.")
+	user.visible_message("<span style=\"color:blue\">[user] holds out [src] and stares into it.</span>")
+	if(src.donor || src.donor_name)
+		if(length(nerdlist) != 0)
+			user.say("Alas, poor [src.donor_name ? "[src.donor_name]" : "[src.donor.real_name]"]! I knew him, [pick(nerdlist)], a fellow of infinite jest, of most excellent fancy.")
+		else
+			user.say("Alas, poor [src.donor_name ? "[src.donor_name]" : "[src.donor.real_name]"]! I knew him, Horatio, a fellow of infinite jest, of most excellent fancy.")
+	else
+		if(length(nerdlist) != 0)
+			user.say("Alas, poor Yorick! I knew him, [pick(nerdlist)], a fellow of infinite jest, of most excellent fancy.")
+		else
+			user.say("Alas, poor Yorick! I knew him, Horatio, a fellow of infinite jest, of most excellent fancy.")
+	return // Now cracks a noble heart.—Good night, sweet prince, And flights of angels sing thee to thy rest.
 
 /obj/item/skull/strange // Predators get this one (Convair880).
 	name = "strange skull"
