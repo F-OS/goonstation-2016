@@ -1296,6 +1296,13 @@
 		else
 			return ..()
 
+/obj/item/skull/attack_self(mob/user as mob)
+	var/nerdlist = list()
+	for (var/mob/living/carbon/M in range(7, user))
+		if (M == user || istype(mob.loc, /turf)) continue
+		nerdlist += M
+	user.say("Alas, poor [src.donor_name]! I knew him, [nerdlist[rand(nerdlist.len())]], a fellow of infinite jest, of most excellent fancy.")
+
 /obj/item/skull/strange // Predators get this one (Convair880).
 	name = "strange skull"
 	desc = "This thing is weird."
